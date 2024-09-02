@@ -1,0 +1,43 @@
+.background{
+   -fx-background-image: url("../images/tictactoe.png");
+       -fx-background-repeat: stretch;
+       -fx-background-size: 900 506;
+       -fx-background-position: center center;
+       -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+.main-btn {
+    -fx-background-color:
+        #000000,
+        linear-gradient(#138d1f, #00ff5c),
+        linear-gradient(#138d1f, #00ff5c),
+        linear-gradient(#138d1f,#00ff5c);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-size: 1.3em;
+    -fx-cursor:hand;
+    -fx-font-family: "Consolas";
+}
+.main-btn:hover{
+    -fx-background-color:
+        #000000,
+        linear-gradient(#00ff5c, #138d1f),
+        linear-gradient(#00ff5c, #138d1f),
+        linear-gradient(#00ff5c,#138d1f);
+}
+
+.shape-btn{
+    -fx-background-color: transparent;
+    -fx-border-color: #00ff5c;
+    -fx-text-fill: #00ff5c;
+    -fx-font-weight: bold;
+    -fx-font-size: 2.8em;
+    -fx-cursor:hand;
+    -fx-font-family: "Consolas";
+}
+.shape-btn:hover{
+    -fx-background-color: #05eb18;
+}
