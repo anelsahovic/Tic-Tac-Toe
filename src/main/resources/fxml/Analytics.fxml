@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.AnalyticsController">
    <children>
       <Button layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToHomeScreen" styleClass="main-btn" stylesheets="@../css/style.css" text="Back" />
+      <TableView fx:id="matchesTable" layoutX="195.0" layoutY="52.0" prefHeight="296.0" prefWidth="385.0">
+        <columns>
+          <TableColumn fx:id="mtId" prefWidth="43.0" text="ID" />
+          <TableColumn fx:id="mtPlayerOne" prefWidth="139.0" text="Player One" />
+            <TableColumn fx:id="mtPlayerTwo" prefWidth="94.0" text="Player Two" />
+            <TableColumn fx:id="mtWinner" minWidth="7.0" prefWidth="107.0" text="Winner" />
+        </columns>
+      </TableView>
+      <Label layoutX="34.0" layoutY="91.0" text="Analytics" textFill="#00ff5c">
+         <font>
+            <Font name="Consolas Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleLabel" layoutX="36.0" layoutY="93.0" text="Analytics" textFill="#138d1f">
+         <font>
+            <Font name="Consolas Bold" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000061" height="99.0" layoutX="28.0" layoutY="151.0" stroke="#00ff5c" strokeType="INSIDE" width="135.0" />
+      <Text fill="#00ff5c" layoutX="31.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check out all the played matches of Tic Tac Toe saved to database." wrappingWidth="129.0" />
+      <Label layoutX="34.0" layoutY="231.0" text="Copyright @2024" textFill="#00ff5c" />
    </children>
 </AnchorPane>

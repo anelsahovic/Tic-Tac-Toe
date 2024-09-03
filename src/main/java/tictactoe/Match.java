@@ -2,30 +2,30 @@ package tictactoe;
 
 public class Match {
     private int matchId;
-    private int playerOneId;
-    private int playerTwoId;
-    private int winnerId;
+    private String playerOne;
+    private String playerTwo;
+    private String winner;
 
-    public Match(int matchId, int playerOneId, int playerTwoId, int winnerId) {
+    public Match(int matchId, String playerOne, String playerTwo, String winner) {
         this.matchId = matchId;
-        this.playerOneId = playerOneId;
-        this.playerTwoId = playerTwoId;
-        this.winnerId = winnerId;
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+        this.winner = winner;
     }
 
     public int getMatchId() {
         return matchId;
     }
 
-    public int getPlayerOneId() {
-        return playerOneId;
+    public String getPlayerOne() {
+        return playerOne;
     }
 
-    public int getPlayerTwoId() {
-        return playerTwoId;
+    public String getPlayerTwo() {
+        return playerTwo;
     }
 
-    public int getWinnerId() {
-        return winnerId;
+    public String getWinner() {
+        return winner;
     }
 }

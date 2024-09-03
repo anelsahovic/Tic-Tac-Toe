@@ -68,7 +68,7 @@ public class ProfilesController implements Initializable {
         return listData;
     }
 
-    public void showTeamsTable() {
+    public void showUsersTable() {
         usersList = addUserListData();
 
         utId.setCellValueFactory(new PropertyValueFactory<>("userId"));
@@ -153,7 +153,7 @@ public class ProfilesController implements Initializable {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            showTeamsTable();
+            showUsersTable();
         }
     }
 
@@ -197,7 +197,7 @@ public class ProfilesController implements Initializable {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            showTeamsTable();
+            showUsersTable();
         }
 
 
@@ -222,7 +222,7 @@ public class ProfilesController implements Initializable {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            showTeamsTable();
+            showUsersTable();
         }
 
     }
@@ -261,6 +261,6 @@ public class ProfilesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        showTeamsTable();
+        showUsersTable();
     }
 }
