@@ -64,7 +64,9 @@ public class PlayerVsPcController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Player Won!");
         alert.setContentText(playerName.getText() + " won the match!");
+
         saveMatch(playerName.getText(),"computer",playerName.getText());
+        updateWins(playerName.getText());
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -87,7 +89,9 @@ public class PlayerVsPcController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Computer Won!");
         alert.setContentText("Computer won the match!");
+
         saveMatch(playerName.getText(),"computer","computer");
+        updateWins("computer");
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -242,6 +246,20 @@ public class PlayerVsPcController implements Initializable {
             prepare.setInt(1,getPlayerId(playerOne));
             prepare.setInt(2,getPlayerId(playerTwo));
             prepare.setInt(3,getPlayerId(winner));
+            prepare.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateWins(String username){
+        String sqlQuery = "UPDATE user SET wins = wins + 1 WHERE user_id = ?;";
+
+        try(Connection connection = Database.connectDB();
+            PreparedStatement prepare = connection.prepareStatement(sqlQuery)) {
+
+            prepare.setInt(1,getPlayerId(username));
             prepare.executeUpdate();
 
         } catch (Exception e) {

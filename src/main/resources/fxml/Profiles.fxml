@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.ProfilesController">
+<AnchorPane prefHeight="400.0" prefWidth="596.0" styleClass="background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.ProfilesController">
    <children>
       <Button layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToHomeScreen" styleClass="main-btn" stylesheets="@../css/style.css" text="Back" />
+      <TableView fx:id="usersTable" layoutX="287.0" layoutY="24.0" prefHeight="352.0" prefWidth="284.0">
+        <columns>
+          <TableColumn fx:id="utId" prefWidth="30.0" text="ID" />
+          <TableColumn fx:id="utName" prefWidth="84.0" text="Name" />
+            <TableColumn fx:id="utUsername" prefWidth="111.0" text="Username" />
+            <TableColumn fx:id="utWins" prefWidth="58.0" text="Wins" />
+        </columns>
+      </TableView>
+      <TextField fx:id="idTextField" layoutX="92.0" layoutY="43.0" prefHeight="25.0" prefWidth="52.0" promptText="ID" />
+      <TextField fx:id="nameTxtfield" layoutX="69.0" layoutY="104.0" promptText="Name" />
+      <TextField fx:id="usernameTxtfield" layoutX="69.0" layoutY="152.0" promptText="Username" />
+      <Button layoutX="144.0" layoutY="43.0" mnemonicParsing="false" onAction="#selectUser" prefHeight="25.0" prefWidth="52.0" styleClass="select-btn" stylesheets="@../css/style.css" text="Select" />
+      <Button layoutX="53.0" layoutY="211.0" mnemonicParsing="false" onAction="#addNewUser" prefWidth="83.0" styleClass="add-btn" stylesheets="@../css/style.css" text="Add" textFill="WHITE" />
+      <Button layoutX="153.0" layoutY="211.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="35.0" prefWidth="83.0" styleClass="update-btn" stylesheets="@../css/style.css" text="Update" />
+      <Button layoutX="53.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteUser" prefWidth="83.0" styleClass="delete-btn" stylesheets="@../css/style.css" text="Delete" />
+      <Button layoutX="153.0" layoutY="270.0" mnemonicParsing="false" onAction="#clearFields" prefWidth="83.0" styleClass="clear-btn" stylesheets="@../css/style.css" text="Clear" />
    </children>
 </AnchorPane>

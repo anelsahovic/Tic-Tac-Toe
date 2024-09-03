@@ -100,7 +100,9 @@ public class PlayerVsPlayerController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Player One Won!");
         alert.setContentText(playerOneName.getText() + " won the match!");
+
         saveMatch(playerOneName.getText(),playerTwoName.getText(),playerOneName.getText());
+        updateWins(playerOneName.getText());
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -123,7 +125,9 @@ public class PlayerVsPlayerController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Player Two Won!");
         alert.setContentText(playerTwoName.getText() + " won the match!");
+
         saveMatch(playerOneName.getText(),playerTwoName.getText(),playerTwoName.getText());
+        updateWins(playerTwoName.getText());
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -249,6 +253,20 @@ public class PlayerVsPlayerController implements Initializable {
             prepare.setInt(1,getPlayerId(playerOne));
             prepare.setInt(2,getPlayerId(playerTwo));
             prepare.setInt(3,getPlayerId(winner));
+            prepare.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateWins(String username){
+        String sqlQuery = "UPDATE user SET wins = wins + 1 WHERE user_id = ?;";
+
+        try(Connection connection = Database.connectDB();
+        PreparedStatement prepare = connection.prepareStatement(sqlQuery)) {
+
+            prepare.setInt(1,getPlayerId(username));
             prepare.executeUpdate();
 
         } catch (Exception e) {
