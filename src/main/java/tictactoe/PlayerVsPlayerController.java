@@ -12,8 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class PlayerVsPlayerController implements Initializable {
@@ -31,7 +35,7 @@ public class PlayerVsPlayerController implements Initializable {
 
     Button[][] buttons = new Button[3][3];
     String[][] symbols = new String[3][3];
-    MainController mainController = new MainController();
+    //MainController mainController = new MainController();
     boolean playerOneTurn = true;
     boolean playerTwoTurn = false;
     private Stage stage;
@@ -39,7 +43,15 @@ public class PlayerVsPlayerController implements Initializable {
     private Parent root;
 
     public void goToHomeScreen(ActionEvent event) throws IOException {
-        mainController.switchToScene(event, "/fxml/HomeScreen.fxml");
+        // mainController.switchToScene(event, "/fxml/HomeScreen.fxml");
+    }
+
+    public void setPlayerOneName(String name) {
+        playerOneName.setText(name);
+    }
+
+    public void setPlayerTwoName(String name) {
+        playerTwoName.setText(name);
     }
 
     public void symbolBtnClick(ActionEvent event) {
@@ -88,7 +100,7 @@ public class PlayerVsPlayerController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Player One Won!");
         alert.setContentText(playerOneName.getText() + " won the match!");
-
+        saveMatch(playerOneName.getText(),playerTwoName.getText(),playerOneName.getText());
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -111,7 +123,7 @@ public class PlayerVsPlayerController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Player Two Won!");
         alert.setContentText(playerTwoName.getText() + " won the match!");
-
+        saveMatch(playerOneName.getText(),playerTwoName.getText(),playerTwoName.getText());
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -206,6 +218,42 @@ public class PlayerVsPlayerController implements Initializable {
         }
         // If all cells are filled and there's no winner, declare a draw
         declareDraw();
+    }
+
+    public int getPlayerId(String username) {
+        int playerId = 0;
+        String sqlQuery = "SELECT user_id FROM user WHERE username=?;";
+        try (Connection connection = Database.connectDB();
+             PreparedStatement prepare = connection.prepareStatement(sqlQuery);
+             ) {
+
+            prepare.setString(1, username);
+            ResultSet result = prepare.executeQuery();
+            if (result.next()) {
+                playerId = result.getInt(1);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return playerId;
+    }
+
+    public void saveMatch(String playerOne, String playerTwo,String winner) {
+        String sqlQuery = "INSERT INTO played_match(player1_id, player2_id, winner_id) VALUES(?,?,?);";
+
+        try(Connection connection = Database.connectDB();
+        PreparedStatement prepare = connection.prepareStatement(sqlQuery)) {
+
+            prepare.setInt(1,getPlayerId(playerOne));
+            prepare.setInt(2,getPlayerId(playerTwo));
+            prepare.setInt(3,getPlayerId(winner));
+            prepare.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void initializeButtons() {

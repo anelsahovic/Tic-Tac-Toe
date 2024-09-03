@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -31,6 +34,10 @@ public class PlayerVsPcController implements Initializable {
     Stage stage;
     Scene scene;
     Parent root;
+
+    public void setPlayerOneName(String name){
+        playerName.setText(name);
+    }
 
     public void symbolBtnClick(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
@@ -57,7 +64,7 @@ public class PlayerVsPcController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Player Won!");
         alert.setContentText(playerName.getText() + " won the match!");
-
+        saveMatch(playerName.getText(),"computer",playerName.getText());
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -80,7 +87,7 @@ public class PlayerVsPcController implements Initializable {
         alert.setTitle("Winner");
         alert.setHeaderText("Computer Won!");
         alert.setContentText("Computer won the match!");
-
+        saveMatch(playerName.getText(),"computer","computer");
         // Set action to be performed when the alert is closed
         alert.setOnHidden(e -> {
             try {
@@ -203,6 +210,42 @@ public class PlayerVsPcController implements Initializable {
                 row = random.nextInt(3);
                 col = random.nextInt(3);
             }
+        }
+    }
+
+    public int getPlayerId(String username) {
+        int playerId = 0;
+        String sqlQuery = "SELECT user_id FROM user WHERE username=?;";
+        try (Connection connection = Database.connectDB();
+             PreparedStatement prepare = connection.prepareStatement(sqlQuery);
+        ) {
+
+            prepare.setString(1, username);
+            ResultSet result = prepare.executeQuery();
+            if (result.next()) {
+                playerId = result.getInt(1);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return playerId;
+    }
+
+    public void saveMatch(String playerOne, String playerTwo,String winner) {
+        String sqlQuery = "INSERT INTO played_match(player1_id, player2_id, winner_id) VALUES(?,?,?);";
+
+        try(Connection connection = Database.connectDB();
+            PreparedStatement prepare = connection.prepareStatement(sqlQuery)) {
+
+            prepare.setInt(1,getPlayerId(playerOne));
+            prepare.setInt(2,getPlayerId(playerTwo));
+            prepare.setInt(3,getPlayerId(winner));
+            prepare.executeUpdate();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

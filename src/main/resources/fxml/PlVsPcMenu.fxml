@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.MainController">
    <children>
       <Label layoutX="121.0" layoutY="29.0" text="Player Vs Computer" textFill="#00ff5c">
@@ -14,14 +13,14 @@
             <Font name="Consolas Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="123.0" layoutY="31.0" text="Player Vs Computer" textFill="#138d1f">
+      <Label fx:id="titleLabel" layoutX="123.0" layoutY="31.0" text="Player Vs Computer" textFill="#138d1f">
          <font>
             <Font name="Consolas Bold" size="36.0" />
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#goToHomeScreen" styleClass="main-btn" stylesheets="@../css/style.css" text="Back" />
       <Button layoutX="222.0" layoutY="266.0" mnemonicParsing="false" onAction="#goToPlVsPc" prefHeight="42.0" prefWidth="155.0" styleClass="main-btn" stylesheets="@../css/style.css" text="Play" />
-      <ChoiceBox layoutX="223.0" layoutY="175.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="playerOneChoicebox" layoutX="223.0" layoutY="175.0" prefWidth="150.0" />
       <Label layoutX="173.0" layoutY="135.0" text="Choose your profile" textFill="#00ff5c">
          <font>
             <Font name="Consolas Bold" size="24.0" />
