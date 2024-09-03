@@ -66,7 +66,7 @@ public class PlayerVsPlayerController implements Initializable {
             }
         }
         checkWinner();
-
+        checkDraw();
     }
 
     public void setPlayerOneTurn() {
@@ -129,6 +129,29 @@ public class PlayerVsPlayerController implements Initializable {
         alert.showAndWait();
     }
 
+    public void declareDraw() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Draw!");
+        alert.setHeaderText("There was a draw!");
+        alert.setContentText("Nobody won the match!");
+
+        // Set action to be performed when the alert is closed
+        alert.setOnHidden(e -> {
+            try {
+                root = FXMLLoader.load(getClass().getResource("/fxml/HomeScreen.fxml"));
+                // Use alert's current window (stage) to navigate
+                stage = (Stage) btn11.getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        alert.showAndWait();
+    }
+
     public void checkWinner() {
 
         //check main diagonal
@@ -169,6 +192,20 @@ public class PlayerVsPlayerController implements Initializable {
         }
 
 
+    }
+
+    public void checkDraw() {
+        // Check for any empty cells
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (symbols[i][j] == null || symbols[i][j].isEmpty()) {
+                    // If there's an empty cell, it's not a draw yet
+                    return;
+                }
+            }
+        }
+        // If all cells are filled and there's no winner, declare a draw
+        declareDraw();
     }
 
     public void initializeButtons() {

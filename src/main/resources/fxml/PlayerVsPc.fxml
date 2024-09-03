@@ -19,17 +19,17 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0000005d" height="258.0" layoutX="127.0" layoutY="193.0" stroke="#00ff5c" strokeType="INSIDE" width="258.0" />
-      <Button fx:id="btn11" layoutX="223.0" layoutY="290.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn10" layoutX="144.0" layoutY="290.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn12" layoutX="303.0" layoutY="290.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn02" layoutX="303.0" layoutY="212.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn01" layoutX="223.0" layoutY="212.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn00" layoutX="144.0" layoutY="212.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn20" layoutX="144.0" layoutY="368.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn21" layoutX="223.0" layoutY="368.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
-      <Button fx:id="btn22" layoutX="303.0" layoutY="368.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn11" layoutX="223.0" layoutY="290.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn10" layoutX="144.0" layoutY="290.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn12" layoutX="303.0" layoutY="290.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn02" layoutX="303.0" layoutY="212.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn01" layoutX="223.0" layoutY="212.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn00" layoutX="144.0" layoutY="212.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn20" layoutX="144.0" layoutY="368.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn21" layoutX="223.0" layoutY="368.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
+      <Button fx:id="btn22" layoutX="303.0" layoutY="368.0" mnemonicParsing="false" onAction="#symbolBtnClick" prefHeight="65.0" prefWidth="65.0" styleClass="shape-btn" stylesheets="@../css/style.css" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000053" height="58.0" layoutX="169.0" layoutY="104.0" stroke="#00ff5c" strokeType="INSIDE" width="175.0" />
-      <Label layoutX="222.0" layoutY="122.0" prefHeight="22.0" prefWidth="70.0" text="Player1" textFill="#04eb1b">
+      <Label fx:id="playerName" layoutX="222.0" layoutY="122.0" prefHeight="22.0" prefWidth="70.0" text="Player1" textFill="#04eb1b">
          <font>
             <Font name="Consolas Bold" size="18.0" />
          </font>
