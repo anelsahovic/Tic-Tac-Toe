@@ -3,8 +3,8 @@ module tictactoe.tictactoe {
     requires javafx.fxml;
     requires java.sql;
     requires java.desktop;
-    requires flyway.core;
-
+    requires org.flywaydb.core;
+    opens db.migration;
 
     opens tictactoe to javafx.fxml;
     exports tictactoe;

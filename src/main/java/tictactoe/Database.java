@@ -1,5 +1,6 @@
 package tictactoe;
 
+
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.FlywayException;
 
@@ -20,9 +21,9 @@ public class Database {
     }
 
     public static void migrate() throws ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+
             // Configure Flyway
             Flyway flyway = Flyway.configure()
                     .dataSource("jdbc:mysql://127.0.0.1:3306/tictactoe", "root", "password")
@@ -42,7 +43,6 @@ public class Database {
             e.printStackTrace();
         }
     }
-
 
 
 }

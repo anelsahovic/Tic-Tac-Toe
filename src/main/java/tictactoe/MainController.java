@@ -102,7 +102,7 @@ public class MainController implements Initializable {
 
     public ArrayList<String> getUsernamesFromDb() {
         ArrayList<String> usernames = new ArrayList<>();
-        String sqlQuery = "SELECT username FROM user WHERE NOT user_id=2;";
+        String sqlQuery = "SELECT username FROM user WHERE NOT name='PC';";
         try (Connection connection = Database.connectDB();
              PreparedStatement prepare = connection.prepareStatement(sqlQuery);
              ResultSet result = prepare.executeQuery()) {
