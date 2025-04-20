@@ -9,11 +9,13 @@ import java.sql.DriverManager;
 import java.util.Arrays;
 
 public class Database {
+    static String user= "root";
+    static String password = "12345678";
 
     public static Connection connectDB() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/tictactoe", "root", "password");
+            return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/tictactoe", user, password);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -26,7 +28,7 @@ public class Database {
 
             // Configure Flyway
             Flyway flyway = Flyway.configure()
-                    .dataSource("jdbc:mysql://127.0.0.1:3306/tictactoe", "root", "password")
+                    .dataSource("jdbc:mysql://127.0.0.1:3306/tictactoe", user, password)
                     .load();
 
             // Log the current Flyway info
